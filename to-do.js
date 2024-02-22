@@ -1,4 +1,5 @@
 let tasks = [];
+getTaskFromStorage();
 
 //  <--- TASK 1.READ - C(R)UD OPERATION  --->
 let tasksList = document.getElementById("tasks-list");
@@ -22,7 +23,8 @@ function displayTodo() {
        <i class="fa-solid fa-file-pen"></i>
      </button>
      <button class="circle" onClick="toggleCompletedTask(${index})">
-     ${task.isDone
+     ${
+       task.isDone
          ? '<i class="fa-solid fa-xmark"></i>'
          : '<i class="fa-solid fa-clipboard-check"></i>'
      }
@@ -62,6 +64,7 @@ addTask.addEventListener("click", (e) => {
     isDone: false,
   };
   tasks.push(taskObj);
+  storageTask();
   displayTodo();
 });
 
@@ -71,6 +74,7 @@ function deleteTask(index) {
   let isConfirmed = confirm(`Are you Sure to delete : \n\t[${task}] ?`);
   if (isConfirmed) {
     tasks.splice(index, 1);
+    storageTask();
     displayTodo();
   }
 }
@@ -95,7 +99,7 @@ function editTask(index) {
 
     editTask.title = newTask;
     editTask.date = newDate;
-    console.log(tasks);
+    storageTask();
     displayTodo();
   });
 }
@@ -104,6 +108,7 @@ function editTask(index) {
 function toggleCompletedTask(index) {
   let task = tasks[index];
   task.isDone = !task.isDone;
+  storageTask();
   displayTodo();
 }
 
@@ -113,4 +118,18 @@ function counterTask() {
   const activeTodos = tasks.filter((todo) => !todo.isDone).length;
   const completedTodos = tasks.length - activeTodos;
   counterEl.innerHTML = `All: ${tasks.length}, Active: ${activeTodos}, Completed: ${completedTodos}`;
+}
+
+// <---  TASK 6.STORAGE FUNCTION TASK  --->
+
+//to save all data on local storage
+function storageTask() {
+  let taskString = JSON.stringify(tasks);
+  window.localStorage.setItem("task", taskString);
+}
+
+//to get all data from local storage to UI
+function getTaskFromStorage() {
+  const retrievedTask = JSON.parse(window.localStorage.getItem("task"));
+  tasks = retrievedTask ?? [];
 }
