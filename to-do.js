@@ -76,3 +76,14 @@ addTask.addEventListener("click", (e) => {
   tasks.push(taskObj);
   displayTodo();
 });
+
+
+// <---  TASK 3.DELETE - CRU(D) OPERATION  --->
+function deleteTask(index) {
+    let task = tasks[index].title;
+    let isConfirmed = confirm(`Are you Sure to delete : \n\t[${task}] ?`);
+    if (isConfirmed) {
+      tasks.splice(index, 1);
+      displayTodo();
+    }
+  }
