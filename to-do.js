@@ -44,8 +44,9 @@ displayTodo();
 //  <--- TASK 2.CREATE - (C)RUD OPERATION  --->
 //to display form added
 let createList = document.getElementById("add-btn");
+let formAdd = document.getElementById("display");
 createList.addEventListener("click", () => {
-  document.getElementById("display").removeAttribute("class");
+  formAdd.removeAttribute("class");
 });
 
 // Add task
@@ -64,6 +65,7 @@ addTask.addEventListener("click", (e) => {
     isDone: false,
   };
   tasks.push(taskObj);
+  formAdd.classList.add("hidden");
   storageTask();
   displayTodo();
 });
@@ -99,6 +101,7 @@ function editTask(index) {
 
     editTask.title = newTask;
     editTask.date = newDate;
+    formAdd.classList.add("hidden");
     storageTask();
     displayTodo();
   });
@@ -133,3 +136,18 @@ function getTaskFromStorage() {
   const retrievedTask = JSON.parse(window.localStorage.getItem("task"));
   tasks = retrievedTask ?? [];
 }
+
+// <---  TASK 7.SEARCH FUNCTION TASK  --->
+const searchInput = document.getElementById("searchInput");
+const todoList = document.querySelectorAll(".task");
+
+searchInput.addEventListener("input", (e) => {
+  const term = e.target.value.toLowerCase();
+  todoList.forEach((todo) => {
+    if (todo.textContent.toLowerCase().includes(term)) {
+      todo.classList.remove("hidden");
+    } else {
+      todo.classList.add("hidden");
+    }
+  });
+});
