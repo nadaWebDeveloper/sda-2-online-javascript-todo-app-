@@ -10,9 +10,8 @@ function displayTodo() {
     <div class="task ${task.isDone ? "done" : ""}">
     <div class="task__info">
      <p id="task-list">${task.title}</p>
-     <input type="date" value ="${
-       task.date
-     }" name="task-list" id="task-list" class="task__date">
+     <input type="date" value ="${ task.date}" 
+     name="task-list" id="task-list" class="task__date">
     </div>
 
     <div class="task__action">
@@ -23,8 +22,7 @@ function displayTodo() {
        <i class="fa-solid fa-file-pen"></i>
      </button>
      <button class="circle" onClick="toggleCompletedTask(${index})">
-     ${
-       task.isDone
+     ${task.isDone
          ? '<i class="fa-solid fa-xmark"></i>'
          : '<i class="fa-solid fa-clipboard-check"></i>'
      }
@@ -107,4 +105,12 @@ function toggleCompletedTask(index) {
   let task = tasks[index];
   task.isDone = !task.isDone;
   displayTodo();
+}
+
+// <---  TASK 5.COUNTER TASK  --->
+function counterTask() {
+  let counterEl = document.getElementsByTagName("h2")[0];
+  const activeTodos = tasks.filter((todo) => !todo.isDone).length;
+  const completedTodos = tasks.length - activeTodos;
+  counterEl.innerHTML = `All: ${tasks.length}, Active: ${activeTodos}, Completed: ${completedTodos}`;
 }
