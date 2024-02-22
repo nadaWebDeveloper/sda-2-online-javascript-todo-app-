@@ -46,3 +46,33 @@ function displayTodo(){
   counterTask();
 }
 displayTodo();
+
+//  <--- TASK 2.CREATE - (C)RUD OPERATION  --->
+//to display form added
+let createList = document.getElementById("add-btn");
+createList.addEventListener("click", () => {
+  document.getElementById("display").removeAttribute("class");
+});
+
+// Add task
+let addTask = document.querySelector(".action-todo");
+const dataInput = document.getElementsByClassName("todo-input");
+const dataDate = document.getElementsByClassName("date-input");
+
+addTask.addEventListener("click", (e) => {
+  e.preventDefault();
+  let newTask = dataInput[0].value.trim();
+  let newDate = dataDate[0].value;
+  // if (newDate === '') {
+  //   let now = new Date();
+  //   var date = now.getFullYear()  +"-"+ (now.getMonth()+1)+"-"+ now.getDate();
+  // }
+
+  let taskObj = {
+    title: newTask,
+    date: newDate,
+    isDone: false,
+  };
+  tasks.push(taskObj);
+  displayTodo();
+});
