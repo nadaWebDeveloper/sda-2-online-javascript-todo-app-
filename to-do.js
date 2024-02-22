@@ -1,28 +1,18 @@
-let tasks = [
-    {
-      title: "Read Book",
-      date: "2024-02-19",
-      isDone: false,
-    },
-    {
-      title: "Do Homework",
-      date: "2023-09-23",
-      isDone: true,
-    },
-    
-  ];
+let tasks = [];
 
-  //  <--- TASK 1.READ - C(R)UD OPERATION  --->
+//  <--- TASK 1.READ - C(R)UD OPERATION  --->
 let tasksList = document.getElementById("tasks-list");
-function displayTodo(){
+function displayTodo() {
   tasksList.innerHTML = "";
   let index = 0;
   for (task of tasks) {
     let content = `    
-    <div class="task ${task.isDone ? 'done': ''}">
+    <div class="task ${task.isDone ? "done" : ""}">
     <div class="task__info">
      <p id="task-list">${task.title}</p>
-     <input type="date" value ="${task.date}" name="task-list" id="task-list" class="task__date">
+     <input type="date" value ="${
+       task.date
+     }" name="task-list" id="task-list" class="task__date">
     </div>
 
     <div class="task__action">
@@ -33,13 +23,17 @@ function displayTodo(){
        <i class="fa-solid fa-file-pen"></i>
      </button>
      <button class="circle" onClick="toggleCompletedTask(${index})">
-     ${task.isDone?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-clipboard-check"></i>'}
+     ${
+       task.isDone
+         ? '<i class="fa-solid fa-xmark"></i>'
+         : '<i class="fa-solid fa-clipboard-check"></i>'
+     }
      </button>
     </div>
     </div>`;
 
     tasksList.innerHTML += content;
-    
+
     //task counter
     index++;
   }
@@ -63,10 +57,6 @@ addTask.addEventListener("click", (e) => {
   e.preventDefault();
   let newTask = dataInput[0].value.trim();
   let newDate = dataDate[0].value;
-  // if (newDate === '') {
-  //   let now = new Date();
-  //   var date = now.getFullYear()  +"-"+ (now.getMonth()+1)+"-"+ now.getDate();
-  // }
 
   let taskObj = {
     title: newTask,
@@ -77,13 +67,37 @@ addTask.addEventListener("click", (e) => {
   displayTodo();
 });
 
-
 // <---  TASK 3.DELETE - CRU(D) OPERATION  --->
 function deleteTask(index) {
-    let task = tasks[index].title;
-    let isConfirmed = confirm(`Are you Sure to delete : \n\t[${task}] ?`);
-    if (isConfirmed) {
-      tasks.splice(index, 1);
-      displayTodo();
-    }
+  let task = tasks[index].title;
+  let isConfirmed = confirm(`Are you Sure to delete : \n\t[${task}] ?`);
+  if (isConfirmed) {
+    tasks.splice(index, 1);
+    displayTodo();
   }
+}
+
+// <---  TASK 4.UPDATE - CR(U)D OPERATION  --->
+function editTask(index) {
+  addTask.innerHTML = `&#9998;`;
+  document.getElementById("display").removeAttribute("class");
+  let editTask = tasks[index];
+
+  dataInput[0].value = editTask.title;
+  dataDate[0].value = editTask.date;
+
+  addTask.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const updateInput = document.getElementsByClassName("todo-input");
+    const updateDate = document.getElementsByClassName("date-input");
+
+    let newTask = updateInput[0].value.trim();
+    let newDate = updateDate[0].value;
+
+    editTask.title = newTask;
+    editTask.date = newDate;
+    console.log(tasks);
+    displayTodo();
+  });
+}
