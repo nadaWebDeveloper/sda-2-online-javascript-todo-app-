@@ -1,0 +1,125 @@
+body {
+    background-color: rgba(97, 78, 78, 0.365);
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .to-do-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .to-do__task {
+    width: 60%;
+    margin-top: 130px;
+    background-color: rgb(236, 230, 230);
+    box-shadow: 0px 2px 17px rgb(95, 84, 84);
+  }
+  .to-do__title {
+    display: inline;
+    font-size: 2rem;
+  }
+  
+  button {
+    border: none;
+    font-size: 20px;
+    margin-right: 4px;
+    box-shadow: 0px 4px 7px rgb(26, 24, 24);
+  }
+  
+  button.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    line-height: 0;
+    cursor: pointer;
+  }
+  
+  .child__card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(46, 147, 147, 0.542);
+    box-shadow: 0px 2px 6px rgb(95, 84, 84);
+  }
+  
+  .task {
+    display: flex;
+    background-color: rgb(158, 158, 223);
+    padding: 5px;
+    border-bottom: solid 1px black;
+    transition: box-shadow 0.2s;
+    margin: 1rem;
+  }
+  
+  .task:hover {
+    box-shadow: 0px 2px 17px rgb(95, 84, 84);
+    background-image: url("https://images.pexels.com/photos/6115017/pexels-photo-6115017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  
+    /* background: url('') no-repeat center center/ cover; */
+  }
+  .task__info {
+    width: 70%;
+    margin-left: 1rem;
+    font-size: 1.7rem;
+  }
+  
+  .task__action {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .task__date {
+    margin-top: 0;
+    border: none;
+    background-color: rgb(158, 158, 223);
+    font-size: 1.5rem;
+    cursor: pointer;
+  
+  }
+  
+  #todoForm{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2rem;
+      padding: 1rem;
+      margin: 2rem;
+      margin-bottom: 0;
+      box-shadow: 0px 2px 17px rgb(95, 84, 84);
+  }
+  
+  #todoForm input{
+      margin-bottom: 0.4rem;
+      border: none;
+      font-size: 1.5rem;
+  }
+  
+  #todoForm button{
+      font-size: 2rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      line-height: 0;
+  }
+  
+  .hidden{
+   display: none;
+  }
+  
+  .done{
+    background-color: rgba(59, 96, 83, 0.31);
+    text-decoration: line-through;
+  }
+  h2{
+    text-align: center;
+  }
