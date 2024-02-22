@@ -101,3 +101,10 @@ function editTask(index) {
     displayTodo();
   });
 }
+
+// <---  TASK 5.COMPLETE TASK  --->
+function toggleCompletedTask(index) {
+  let task = tasks[index];
+  task.isDone = !task.isDone;
+  displayTodo();
+}
