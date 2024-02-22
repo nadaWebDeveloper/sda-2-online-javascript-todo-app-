@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2490/2490402.png" />
+    <title>To Do</title>
+  </head>
+  <body>
+    <section>
+      <!-- center div -->
+      <div class="to-do-card">
+        <!-- task div -->
+        <div class="to-do__task">
+          <!-- header div -->
+          <div class="child__card">
+            <h1 class="to-do__title">My TO DO List</h1>
+            <button id="add-btn" class="circle" aria-labelledby="to add new task" >
+              <i class="fa-solid fa-calendar-plus" ></i>
+            </button>
+          </div>
+          <!-- header div -->
+          <!-- task div -->
+          <div class="hidden" id="display">         
+          <form id="todoForm" >
+            <label for="todoInput">Todo:</label>
+            <input type="text" id="todoInput" class="todo-input" >
+            <label for="dateInput">Date:</label>
+            <input type="date" id="dateInput"  class="date-input" >
+            <button type="submit"  class="action-todo">
+              +
+            </button>
+          </form>
+        </div>
+          <div id="tasks-list" style="padding: 20px;">
+        </div>
+        <!-- task div -->
+        <h2 aria-labelledby="to display the counter for task"></h2>
+      </div>
+      <!-- end center div -->
+    </section>
+  </body>
+  <script src="./to-do.js"></script>
 </html>
