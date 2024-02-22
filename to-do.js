@@ -5,12 +5,12 @@ let tasksList = document.getElementById("tasks-list");
 function displayTodo() {
   tasksList.innerHTML = "";
   let index = 0;
-  for (task of tasks) {
+  for (const task of tasks) {
     let content = `    
     <div class="task ${task.isDone ? "done" : ""}">
     <div class="task__info">
      <p id="task-list">${task.title}</p>
-     <input type="date" value ="${ task.date}" 
+     <input type="date" value ="${task.date}" 
      name="task-list" id="task-list" class="task__date">
     </div>
 
