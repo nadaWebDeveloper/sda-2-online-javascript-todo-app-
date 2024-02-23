@@ -49,6 +49,12 @@ createList.addEventListener("click", () => {
   formAdd.removeAttribute("class");
 });
 
+//to close form added
+let closeForm = document.getElementsByClassName("x-close")[0];
+closeForm.addEventListener("click", () => {
+  formAdd.classList.add("hidden");
+});
+
 // Add task
 let addTask = document.querySelector(".action-todo");
 const dataInput = document.getElementsByClassName("todo-input");
